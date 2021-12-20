@@ -1,15 +1,15 @@
 function main() {
-
+////////////////////------------------ intialization
     const inputEl = document.querySelector('#city-input');
     const searchFormEl = document.querySelector('#search-form');
     const cityName = document.querySelector('#city-name');
     const currentTempEl = document.querySelector('#temperature');
     const currentHumidityEl = document.querySelector('#humidity');
     const currentWindEl = document.querySelector('#wind-speed');
-//dates
+////////----------------------dates
 
 //user city input
-// handle search form
+///////////////---------------------------search form
 function getQuery(event) {
     event.preventDefault();
 
@@ -20,7 +20,7 @@ function getQuery(event) {
 };
 
 
-// Uses API to get current weather of paticular location
+////---------------------- Uses API to get current weather of paticular location
 function getCityCoord(city) {
     let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + "d97708cd505c038d974b4cd2aa689d4a";
 
@@ -41,6 +41,8 @@ function getCityCoord(city) {
 };
 
 
+//----------------------------------empty previous data show current selection
+// -------------------------------------------------------current weather
 //empty previous data show current selection
 function getCityWeather(data,city) {
     let apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&units=imperial&appid=" + "d97708cd505c038d974b4cd2aa689d4a";
@@ -51,32 +53,16 @@ function getCityWeather(data,city) {
         response.json().then(function (data) {
             console.log(data);
             
-            displayCurrentWeather(data, city);   
+               
+
+            displayCurrentWeather(data, city);
         });
       } else {
             alert('Error: Current weather for City not found');
       }
     })
   };
-//open power app
-// current weather
-function getCityWeather(data,city) {
-    let apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&units=imperial&appid=" + "d97708cd505c038d974b4cd2aa689d4a";
-  
-    fetch(apiUrl)
-    .then(function (response) {
-      if (response.ok) {
-        response.json().then(function (data) {
-            console.log(data);
-            
-            displayCurrentWeather(data, city);   
-        });
-      } else {
-            alert('Error: Current weather for City not found');
-      }
-    })
-  };
-//future conditions for that city
+
 //city is added to the search history local storage
 // weather conditions, the temperature, the wind speed, and the humidity,uv index
 function displayCurrentWeather(data, city) {
@@ -91,6 +77,9 @@ function displayCurrentWeather(data, city) {
     currentHumidityEl.textContent = "Humidity:" + data.current.humidity;
  
 };
+
+
+
 // format date to readable format
 function formatDate(date) {
     const milliseconds = date * 1000 
