@@ -18,8 +18,6 @@ function getQuery(event) {
 
     getCityCoord(city);
 };
-
-
 ////---------------------- Uses API to get current weather of paticular location
 function getCityCoord(city) {
     let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + "d97708cd505c038d974b4cd2aa689d4a";
@@ -40,7 +38,6 @@ function getCityCoord(city) {
     })
 };
 
-
 //----------------------------------empty previous data show current selection
 // -------------------------------------------------------current weather
 //empty previous data show current selection
@@ -54,8 +51,11 @@ function getCityWeather(data,city) {
             console.log(data);
             
                
-
             displayCurrentWeather(data, city);
+
+            let weatherDisplay = document.getElementById("weather-display");
+            weatherDisplay.classList.add("activeWeatherDisplay");
+            displayForcast(data); 
         });
       } else {
             alert('Error: Current weather for City not found');
@@ -64,7 +64,7 @@ function getCityWeather(data,city) {
   };
 
 //city is added to the search history local storage
-// weather conditions, the temperature, the wind speed, and the humidity,uv index
+// -------------------------------------weather conditions, the temperature, the wind speed, and the humidity,uv index
 function displayCurrentWeather(data, city) {
     let date = formatDate(data.current.dt);
     let icon = data.current.weather[0].icon;
@@ -80,7 +80,7 @@ function displayCurrentWeather(data, city) {
 
 
 
-// format date to readable format
+// ---------------------------------format date to readable format
 function formatDate(date) {
     const milliseconds = date * 1000 
     const dateObject = new Date(milliseconds)
@@ -89,7 +89,42 @@ function formatDate(date) {
   
     return humanDateFormat;
   }
+  //--------------------------------------------future conditions for that city
+  function displayForcast(data) {
+    
+    let forecastTitle = document.querySelector('#forecast')
+    forecastTitle.innerHTML = `
+      <div class="forecast">
+        <span id="city-name">5 Day Forecast:</span>
+      </div>
+      `
+    
+    let forecastCard = document.querySelector('#five-day-forecast')
+    forecastCard.innerHTML = "";
   
+    for (var i = 1; i < 6; i++) {
+      let date = formatDate(data.daily[i].dt);
+      let icon = data.daily[i].weather[0].icon;
+      let temp = data.daily[i].temp.day;
+      let wind = data.daily[i].wind_speed;
+      let humidity = data.daily[i].humidity;
+    
+      forecastCard.innerHTML += `
+        <div class="forecast">
+          <div class="title">
+            <span class="text">${date}</span>
+          </div>
+          <div class="supporting-text">
+            <img src="https://openweathermap.org/img/wn/${icon}@2x.png"></img>
+            <p>Temp: ${temp}</p>
+            <p>Wind: ${wind}</p>
+            <p>Humidity: ${humidity}</p>
+          </div>
+        </div>
+        `
+      }; 
+  
+  };
   searchFormEl.addEventListener("submit", getQuery);
   };
 main();

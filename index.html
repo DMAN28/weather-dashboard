@@ -6,42 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
     <title>Weather dash board</title>
-<header class="card-body card p-3 bg-info col-lg-3 bg-info text-light sticky-top d-flex flex-column p-4 p-lg-3>
-<body>
-    <!-- header -->
-  <header>
-    <div>Weather Dashboard</div>
-  <section class="search">
-    <span class="title">Search for a City:</span>
-        <form id="search-form">
-            <div>
-            <input class="textfield" type="text" id="city-input">
-            <label class="label" for="city-input">Enter city name</label>
-            </div>
-            <button id="search-button" class="button">
-                Search
-            </button>
-        </form>
-  </section>
+    <header class="card-body card p-3 bg-info col-lg-3 bg-info text-light sticky-top d-flex flex-column p-4 p-lg-3 ">
+      <div>Weather Dashboard</div>
+    <section>
+      <span class="title">Search for a City:</span>
+          <form id="search-form">
+              <div>
+              <input class="textfield" type="text" id="city-input">
+              <label class="label" for="city-input">Enter city name</label>
+              </div>
+              <button id="search-button" class="button">
+                  Search
+              </button>
+          </form>
+    </section>
   </header>
-  <main class="col-12 col-lg-9 d-flex flex-col">
-    <div class="card" style="width: 18rem;">
-        <!-- weather -->
-        <div id="weather-display" class="card-body card p-3 bg-info ">
-            <div>
-                <div class="card-title text-light text-center d-flex align-center">
-                  <span id="city-name"></span>
-                </div>
-                <div class="bg-info text-light text-center d-flex align-center list-group list-group-flush">
-                    <p id="temperature"></p>
-                    <p id="wind-speed"></p>
-                    <p id="humidity"></p>                    
-                </div>
-            </div>
-        </div>
-            
+    <main class="col-12 col-lg-9 d-flex flex-col">
+      <div class="card" style="width: 18rem;">
+          <!-- weather -->
+          <div id="weather-display" class="card-body card p-3 bg-info " >
+              <div>
+                  <div class="card-title text-light text-center d-flex align-center">
+                    <span id="city-name"></span>
+                  </div>
+                  <div class="bg-info text-light text-center d-flex align-center list-group list-group-flush">
+                      <p id="temperature"></p>
+                      <p id="wind-speed"></p>
+                      <p id="humidity"></p>                    
+                  </div>
+              </div>
+          </div>      
+      </div>
+      <div class="container">
+      <div class="col-md-12">
+      <div id="forecast"> 
+      </div>
+      <div id="five-day-forecast" ></div>
     </div>
-  </main>
+    </main>
   <script src="./assets/js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
