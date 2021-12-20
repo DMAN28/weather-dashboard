@@ -11,16 +11,37 @@
   <header>
     <div>Weather Dashboard</div>
   </header>
+  <section class="search">
+    <span class="title">Search for a City:</span>
+        <form id="search-form">
+            <div>
+            <input class="textfield" type="text" id="city-input">
+            <label class="label" for="city-input">Enter city name</label>
+            </div>
+            <button id="search-button" class="button">
+                Search
+            </button>
+        </form>
 
-  <!-- search bar -->
-  <section class="row">
-    <div>
-      <h1>Search for a City:</h1>
-      <input id="input" type="text" placeholder="Search" aria-label="Search">
   </section>
-
-  <!-- main container-->
-  <main>
+  <main class="content">
+    <div class="page-content">
+        <!-- weather -->
+        <div id="weather-display">
+            <div>
+                <div>
+                  <span id="city-name" class="mdl-card__title-text"></span>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <p id="temperature"></p>
+                    <p id="wind-speed"></p>
+                    <p id="humidity"></p>                    
+                </div>
+            </div>
+        </div>
+            
+    </div>
   </main>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
